@@ -42,7 +42,7 @@ INSTALLED_APPS = [
 ]
 
 # Auth model
-AUTH_USER_MODEL = 'authnapp.ShopUser'
+AUTH_USER_MODEL = "authnapp.ShopUser"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

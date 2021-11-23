@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('mainapp', '0005_auto_20211115_1659'),
+        ("mainapp", "0005_auto_20211115_1659"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='productcategory',
-            name='is_active',
-            field=models.BooleanField(default=True, verbose_name='категория активна'),
+            model_name="productcategory",
+            name="is_active",
+            field=models.BooleanField(default=True, verbose_name="категория активна"),
         ),
     ]

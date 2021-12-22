@@ -141,6 +141,7 @@ def product_quantity_update_delete(instance, **kwargs):
     instance.product.save()
 
 
+
 from django.http import JsonResponse
 
 from mainapp.models import Product
@@ -153,3 +154,5 @@ def get_product_price(request, pk):
             return JsonResponse({"price": product.price})
         else:
             return JsonResponse({"price": 0})
+
+

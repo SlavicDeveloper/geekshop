@@ -4,15 +4,18 @@ from mainapp.models import Product
 from ordersapp.models import Order, OrderItem
 
 
-class OrderForm(forms.ModelForm):
+class OrderItemForm(forms.ModelForm):
+    price = forms.CharField(label="цена", required=False)
+
     def __init__(self, *args, **kwargs):
-        super(OrderForm, self).__init__(*args, **kwargs)
+        super(OrderItemForm, self).__init__(*args, **kwargs)
+        self.fields["product"].queryset = Product.get_items().select_related()
         for field_name, field in self.fields.items():
             field.widget.attrs["class"] = "form-control"
 
     class Meta:
-        model = Order
-        exclude = ("user",)
+        model = OrderItem
+        exclude = ()
 
 
 class OrderItemForm(forms.ModelForm):

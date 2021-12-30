@@ -17,6 +17,10 @@ def basket(request):
     return render(request, "basketapp/basket.html", content)
 
 
+from django.db import connection
+from django.db.models import F
+
+
 @login_required
 def basket_add(request, pk):
     if "login" in request.META.get("HTTP_REFERER"):
@@ -26,9 +30,16 @@ def basket_add(request, pk):
 
     if not basket:
         basket = Basket(user=request.user, product=product)
+        basket.quantity += 1
+    else:
+        basket.quantity = F("quantity") + 1
 
-    basket.quantity += 1
     basket.save()
+
+    update_queries = list(filter(lambda x: "UPDATE" in x["sql"], connection.queries))
+    print(f"query basket_add: {update_queries}")
+
+    return HttpResponseRedirect(request.META.get("HTTP_REFERER"))
 
     return HttpResponseRedirect(request.META.get("HTTP_REFERER"))
 

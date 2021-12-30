@@ -5,8 +5,7 @@ from django.db import transaction
 from django.shortcuts import HttpResponseRedirect, render
 from django.urls import reverse
 
-from authnapp.forms import (ShopUserEditForm, ShopUserLoginForm,
-                            ShopUserProfileEditForm, ShopUserRegisterForm)
+from authnapp.forms import ShopUserEditForm, ShopUserLoginForm, ShopUserProfileEditForm, ShopUserRegisterForm
 from authnapp.models import ShopUser
 
 
